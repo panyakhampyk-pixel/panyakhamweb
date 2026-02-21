@@ -1,0 +1,73 @@
+-- Create students table
+CREATE TABLE IF NOT EXISTS public.students (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    prefix TEXT,
+    first_name TEXT NOT NULL,
+    last_name TEXT NOT NULL,
+    id_card TEXT,
+    birth_date DATE,
+    ethnicity TEXT,
+    nationality TEXT,
+    religion TEXT,
+    birthplace TEXT,
+    weight TEXT,
+    height TEXT,
+    disease TEXT,
+    registered_address TEXT,
+    current_address TEXT,
+    phone TEXT,
+    father_name TEXT,
+    father_id_card TEXT,
+    father_age TEXT,
+    father_occupation TEXT,
+    father_phone TEXT,
+    mother_name TEXT,
+    mother_id_card TEXT,
+    mother_age TEXT,
+    mother_occupation TEXT,
+    mother_phone TEXT,
+    parents_status TEXT,
+    guardian_name TEXT,
+    guardian_id_card TEXT,
+    guardian_age TEXT,
+    guardian_occupation TEXT,
+    guardian_relation TEXT,
+    guardian_phone TEXT,
+    guardian_address TEXT,
+    siblings_count TEXT,
+    siblings_male TEXT,
+    siblings_female TEXT,
+    old_school TEXT,
+    old_school_location TEXT,
+    gpa TEXT,
+    graduated_year TEXT,
+    education_level TEXT,
+    apply_level TEXT,
+    payment_method TEXT DEFAULT 'full',
+    payment_amount TEXT,
+    recruiter_name TEXT,
+    receiver_name TEXT,
+    parent_signature_name TEXT,
+    parent_signature_address TEXT,
+    doc_house_registration BOOLEAN DEFAULT FALSE,
+    doc_id_card BOOLEAN DEFAULT FALSE,
+    doc_education BOOLEAN DEFAULT FALSE,
+    doc_photo BOOLEAN DEFAULT FALSE,
+    doc_name_change BOOLEAN DEFAULT FALSE,
+    deposit_status TEXT DEFAULT 'pending',
+    tuition_status TEXT DEFAULT 'pending',
+    grade_level TEXT,
+    nickname TEXT,
+    email TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Enable RLS
+ALTER TABLE public.students ENABLE ROW LEVEL SECURITY;
+
+-- Allow public to insert (anyone can register)
+CREATE POLICY "Public insert students" ON public.students FOR INSERT WITH CHECK (true);
+
+-- Allow authenticated admins to full access
+CREATE POLICY "Admin full access students" ON public.students FOR ALL USING (auth.role() = 'authenticated');

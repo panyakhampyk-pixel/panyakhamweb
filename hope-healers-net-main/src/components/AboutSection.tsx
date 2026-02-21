@@ -50,15 +50,15 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <section className="py-20 md:py-32 bg-white relative overflow-hidden">
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20 mb-20">
+    <section className="py-12 md:py-32 bg-white relative overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20 mb-12 md:mb-20">
           {/* Left Column: Text Content */}
           <div className="lg:w-7/12 order-2 lg:order-1">
-            <div className="inline-block px-4 py-1.5 bg-secondary/10 text-secondary rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+            <div className="inline-block px-4 py-1.5 bg-secondary/10 text-secondary rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6">
               เกี่ยวกับ
             </div>
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-8 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 md:mb-8 leading-tight">
               มูลนิธิเพื่อการศึกษา <span className="text-primary">ปัญญาคำ</span>
             </h2>
 
@@ -82,7 +82,7 @@ const AboutSection = () => {
 
           {/* Right Column: Logo Image (No Text, Massive Size) */}
           <div className="lg:w-5/12 order-1 lg:order-2 flex justify-center items-center">
-            <div className="relative w-full max-w-[450px] aspect-square flex items-center justify-center">
+            <div className="relative w-full max-w-[180px] lg:max-w-[450px] aspect-square flex items-center justify-center">
               {/* Background Glow Effect */}
               <div className="absolute inset-0 bg-blue-gradient opacity-30 filter blur-3xl animate-pulse"></div>
 
@@ -98,18 +98,18 @@ const AboutSection = () => {
           </div>
         </div>
 
-        {/* Values and Stats still maintained for completeness */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-20">
+        {/* Values and Stats - 2 columns on mobile */}
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-20">
           {values.map((item) => (
             <div
               key={item.title}
-              className="bg-card/50 backdrop-blur-sm rounded-3xl p-8 border border-border/50 hover:shadow-xl hover:shadow-primary/5 transition-all group"
+              className="bg-card/30 backdrop-blur-sm rounded-2xl md:rounded-3xl p-5 md:p-8 border border-border/50 hover:shadow-xl hover:shadow-primary/5 transition-all group"
             >
-              <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center mb-6 group-hover:bg-warm-gradient transition-colors">
-                <item.icon className="w-7 h-7 text-secondary group-hover:text-white transition-colors" />
+              <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-secondary/10 flex items-center justify-center mb-4 md:mb-6 group-hover:bg-warm-gradient transition-colors">
+                <item.icon className="w-5 h-5 md:w-7 md:h-7 text-secondary group-hover:text-white transition-colors" />
               </div>
-              <h3 className="text-xl font-bold text-foreground mb-3">{item.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+              <h3 className="text-base md:text-xl font-bold text-foreground mb-2 md:mb-3">{item.title}</h3>
+              <p className="text-[10px] md:text-sm text-muted-foreground leading-relaxed line-clamp-3 md:line-clamp-none">{item.description}</p>
             </div>
           ))}
         </div>

@@ -14,7 +14,9 @@ import {
     Users,
     Inbox,
     Trophy,
-    Briefcase
+    Briefcase,
+    Search,
+    Handshake
 } from "lucide-react";
 import AdminSidebar from "@/components/AdminSidebar";
 import { Button } from "@/components/ui/button";
@@ -22,6 +24,7 @@ import { Button } from "@/components/ui/button";
 const stats = [
     { label: "ผู้บริจาคทั้งหมด", value: "1,284", icon: Heart, color: "text-rose-500", bg: "bg-rose-50 dark:bg-rose-950" },
     { label: "นักเรียนที่ได้รับทุน", value: "347", icon: GraduationCap, color: "text-amber-500", bg: "bg-amber-50 dark:bg-amber-950" },
+    { label: "อาจารย์ในระบบ", value: "4", icon: Users, color: "text-indigo-500", bg: "bg-indigo-50 dark:bg-indigo-950" },
     { label: "โครงการที่ดำเนินอยู่", value: "12", icon: BookOpen, color: "text-emerald-500", bg: "bg-emerald-50 dark:bg-emerald-950" },
     { label: "ข่าวสารที่เผยแพร่", value: "58", icon: Newspaper, color: "text-sky-500", bg: "bg-sky-50 dark:bg-sky-950" },
 ];
@@ -56,7 +59,7 @@ const Admin = () => {
 
                 <main className="p-6 space-y-6 bg-accent/5 flex-1 overflow-auto">
                     {/* Stats Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
                         {stats.map((stat) => (
                             <div key={stat.label} className="bg-card p-6 rounded-2xl border border-border flex items-center gap-4 shadow-sm hover:shadow-md transition-shadow">
                                 <div className={`w-12 h-12 rounded-xl ${stat.bg} flex items-center justify-center shrink-0`}>
@@ -120,11 +123,15 @@ const Admin = () => {
                             <Button asChild className="rounded-full bg-primary text-white"><a href="/admin/news"><Plus className="w-4 h-4 mr-2" /> เขียนข่าวใหม่</a></Button>
                             <Button asChild variant="outline" className="rounded-full"><a href="/admin/donations"><Heart className="w-4 h-4 mr-2" /> จัดการงานบริจาค</a></Button>
                             <Button asChild variant="outline" className="rounded-full"><a href="/admin/staff"><Users className="w-4 h-4 mr-2" /> จัดการบุคลากร</a></Button>
+                            <Button asChild variant="outline" className="rounded-full bg-amber-500/10 text-amber-600 border-amber-200 hover:bg-amber-500 hover:text-white transition-all"><a href="/admin/teachers"><GraduationCap className="w-4 h-4 mr-2" /> รายชื่ออาจารย์ในระบบ</a></Button>
                             <Button asChild variant="outline" className="rounded-full"><a href="/admin/messages"><Inbox className="w-4 h-4 mr-2" /> ข้อความติดต่อ</a></Button>
                             <Button asChild variant="outline" className="rounded-full"><a href="/admin/settings"><Settings className="w-4 h-4 mr-2" /> ตั้งค่าเว็บไซต์</a></Button>
                             <Button asChild variant="outline" className="rounded-full"><a href="/admin/slider"><ArrowUpRight className="w-4 h-4 mr-2" /> เปลี่ยนรูปหน้าแรก</a></Button>
                             <Button asChild variant="outline" className="rounded-full"><a href="/admin/pride"><Trophy className="w-4 h-4 mr-2" /> ความภาคภูมิใจ</a></Button>
                             <Button asChild variant="outline" className="rounded-full"><a href="/admin/programs"><Briefcase className="w-4 h-4 mr-2" /> รูปภาพกิจกรรมเลื่อน</a></Button>
+                            <Button asChild variant="outline" className="rounded-full bg-indigo-500/10 text-indigo-600 border-indigo-200 hover:bg-indigo-500 hover:text-white transition-all"><a href="/admin/students"><GraduationCap className="w-4 h-4 mr-2" /> จัดการข้อมูลนักเรียน</a></Button>
+                            <Button asChild variant="outline" className="rounded-full bg-amber-500/10 text-amber-600 border-amber-200 hover:bg-amber-500 hover:text-white transition-all"><a href="/check-application"><Search className="w-4 h-4 mr-2" /> ตรวจสอบรายชื่อ (รายคน)</a></Button>
+                            <Button asChild variant="outline" className="rounded-full bg-emerald-500/10 text-emerald-600 border-emerald-200 hover:bg-emerald-500 hover:text-white transition-all"><a href="/admin/partners"><Handshake className="w-4 h-4 mr-2" /> จัดการพันธมิตร & MOU</a></Button>
                         </div>
                     </div>
                 </main>

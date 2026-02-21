@@ -6,12 +6,15 @@ const Footer = () => {
   const { user } = useAuth();
 
   const navItems = [
-    { label: "เกี่ยวกับ", href: "/about" },
+    { label: "บุคลากร", href: "/staff" },
+    { label: "รายชื่ออาจารย์", href: "/teachers" },
     { label: "ร่วมบริจาค", href: "/donate" },
     { label: "ขอรับทุน", href: "/scholarship" },
+    { label: "สมัครเรียน", href: "/students" },
+    { label: "ระบบสำหรับอาจารย์", href: "/teacher" },
     { label: "โครงการ", href: "/programs" },
     { label: "ข่าวสาร", href: "/news" },
-    { label: "ติดต่อคง", href: "/contact" },
+    { label: "ติดต่อ", href: "/contact" },
   ];
 
   return (
@@ -30,10 +33,10 @@ const Footer = () => {
             </p>
           </div>
 
-          <div>
+          <div className="hidden md:block">
             <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-6">ลิงก์ด่วน</h4>
             <div className="space-y-3">
-              {navItems.map((item) => (
+              {navItems.filter(item => item.href !== '/teacher').map((item) => (
                 <Link
                   key={item.label}
                   to={item.href}
@@ -46,13 +49,20 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-6">ติดต่อมููลนิธิ</h4>
-            <div className="space-y-4 text-sm font-medium text-primary-foreground/60">
+            <h4 className="text-sm font-bold text-white uppercase tracking-widest mb-6">ติดต่อมูลนิธิ</h4>
+            <div className="space-y-4 text-sm font-medium text-primary-foreground/60 mb-8">
               <p className="flex items-start gap-2">ที่อยู่: 199 ม.5 ต.เวียงยอง อ.เมืองลำพูน จ.ลำพูน 51000</p>
               <p>โทรศัพท์: 064-073-7959</p>
               <p>อีเมล: panyakham@gmail.com</p>
-              <p>Website: www.panyakham.com</p>
             </div>
+
+            <Link
+              to="/teacher"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-white font-bold text-sm hover:bg-white/10 transition-all hover:scale-105 active:scale-95"
+            >
+              <LogIn className="w-4 h-4 text-primary" />
+              ระบบสำหรับอาจารย์
+            </Link>
           </div>
         </div>
 

@@ -27,7 +27,7 @@ const NewsSection = () => {
           news_images (image_url)
         `)
         .order("published_at", { ascending: false })
-        .limit(3);
+        .limit(6);
 
       const formattedNews = data?.map((item: any) => ({
         ...item,
@@ -64,45 +64,40 @@ const NewsSection = () => {
         </div>
 
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-card rounded-3xl h-80 animate-pulse border border-border" />
+          <div className="flex gap-6 overflow-x-hidden pb-8">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="bg-card rounded-[2rem] h-[340px] w-[280px] md:w-[320px] shrink-0 animate-pulse border border-border" />
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
             {news.map((item) => (
               <article
                 key={item.id}
                 onClick={() => navigate(`/news/${item.id}`)}
-                className="bg-card rounded-3xl border border-border overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group cursor-pointer flex flex-col"
+                className="w-[280px] md:w-[320px] shrink-0 snap-start bg-card rounded-[2rem] border border-border overflow-hidden hover:shadow-xl transition-all duration-300 group cursor-pointer flex flex-col"
               >
-                <div className="aspect-[16/10] overflow-hidden relative bg-accent">
+                <div className="aspect-[4/3] overflow-hidden relative bg-accent">
                   <img
                     src={item.image_url}
                     alt={item.title}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <span className="px-4 py-1.5 rounded-full bg-white/90 backdrop-blur-md text-primary font-bold text-[10px] uppercase shadow-sm">
+                  <div className="absolute top-3 left-3 flex gap-2">
+                    <span className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-primary font-bold text-[9px] uppercase shadow-sm">
                       {item.category}
                     </span>
-                    {item.image_count > 1 && (
-                      <span className="px-3 py-1.5 rounded-full bg-black/50 backdrop-blur-md text-white font-bold text-[10px] shadow-sm">
-                        +{item.image_count - 1} รูป
-                      </span>
-                    )}
                   </div>
                 </div>
-                <div className="p-6 md:p-8 flex-1 flex flex-col">
-                  <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4 font-medium">
-                    <Calendar className="w-3.5 h-3.5 text-primary" />
+                <div className="p-5 md:p-6 flex-1 flex flex-col">
+                  <div className="flex items-center gap-2 text-[10px] text-muted-foreground mb-3 font-medium">
+                    <Calendar className="w-3 h-3 text-primary" />
                     <span>{formatDate(item.published_at)}</span>
                   </div>
-                  <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+                  <h3 className="text-base font-bold text-foreground mb-2 group-hover:text-primary transition-colors line-clamp-2 leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3">
+                  <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2 opacity-80">
                     {item.excerpt}
                   </p>
                 </div>

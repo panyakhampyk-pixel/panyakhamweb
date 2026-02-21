@@ -53,7 +53,7 @@ const HeroSection = () => {
   const currentSlide = (slides[current] || {}) as Slide;
 
   return (
-    <section className="relative h-[600px] md:h-[800px] w-full overflow-hidden bg-background">
+    <section className="relative h-[500px] md:h-[800px] w-full overflow-hidden bg-background group">
       {/* Background Slides / Fallback */}
       <div className="absolute inset-0 w-full h-full">
         {slides.length > 0 ? (
@@ -80,7 +80,7 @@ const HeroSection = () => {
       </div>
 
       {/* Premium Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-background" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/40 to-background" />
 
       {/* Navigation Arrows */}
       {slides.length > 1 && (
@@ -102,37 +102,37 @@ const HeroSection = () => {
 
       {/* Dot Indicators */}
       {slides.length > 1 && (
-        <div className="absolute bottom-10 z-20 flex gap-2 w-full justify-center">
+        <div className="absolute bottom-6 z-20 flex gap-2 w-full justify-center">
           {slides.map((_, idx) => (
             <button
               key={idx}
               onClick={() => setCurrent(idx)}
-              className={`h-1.5 transition-all duration-300 rounded-full ${idx === current ? "w-8 bg-amber-500" : "w-2 bg-white/30 hover:bg-white/50"
+              className={`h-1 transition-all duration-300 rounded-full ${idx === current ? "w-6 bg-amber-500" : "w-1.5 bg-white/30 hover:bg-white/50"
                 }`}
             />
           ))}
         </div>
       )}
 
-      <div className="relative z-10 container mx-auto px-4 h-full flex flex-col items-center justify-center text-center">
+      <div className="relative z-10 container mx-auto px-6 h-full flex flex-col items-center justify-center text-center">
         {/* Title */}
-        <h1 key={`t-${current}`} className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 animate-fade-in-up max-w-4xl">
+        <h1 key={`t-${current}`} className="text-3xl md:text-6xl lg:text-7xl font-bold text-white mb-2 animate-fade-in-up max-w-4xl tracking-tight leading-tight">
           {currentSlide.title || "มูลนิธิเพื่อการศึกษาปัญญาคำ"}
         </h1>
 
         {/* Subtitle */}
-        <p key={`st-${current}`} className="text-xl md:text-3xl text-amber-400 mb-6 animate-fade-in-up font-medium" style={{ animationDelay: "0.1s" }}>
+        <p key={`st-${current}`} className="text-lg md:text-3xl text-amber-400 mb-4 md:mb-6 animate-fade-in-up font-medium" style={{ animationDelay: "0.1s" }}>
           {currentSlide.subtitle || "มอบโอกาสทางการศึกษา พัฒนาคุณภาพชีวิตที่ดีขึ้น"}
         </p>
 
-        {/* Description */}
-        <p key={`d-${current}`} className="text-sm md:text-lg text-white/80 max-w-2xl mx-auto mb-10 animate-fade-in-up leading-relaxed" style={{ animationDelay: "0.2s" }}>
+        {/* Description - Hiden on Mobile */}
+        <p key={`d-${current}`} className="hidden md:block text-sm md:text-lg text-white/80 max-w-2xl mx-auto mb-10 animate-fade-in-up leading-relaxed" style={{ animationDelay: "0.2s" }}>
           {currentSlide.description || "สร้างสรรค์สังคม ชีวิตที่มีคุณภาพ ผ่านโครงการทุนการศึกษาให้เด็กในพื้นที่ห่างไกล"}
         </p>
 
         {/* Centered Buttons */}
-        <div className="flex flex-col sm:flex-row gap-5 justify-center items-center animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
-          <Button size="lg" asChild className="bg-warm-gradient hover:scale-105 transition-transform text-white text-lg px-10 py-7 rounded-full shadow-lg border-none min-w-[200px]">
+        <div className="flex flex-col sm:flex-row gap-3 md:gap-5 justify-center items-center animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+          <Button size="lg" asChild className="bg-warm-gradient hover:scale-105 transition-transform text-white text-base md:text-lg px-8 md:px-10 py-5 md:py-7 rounded-full shadow-lg border-none min-w-[180px] md:min-w-[200px]">
             <a
               href={currentSlide.button1_link || "/donate"}
               target={currentSlide.button1_link?.startsWith('http') ? "_blank" : undefined}
@@ -144,7 +144,7 @@ const HeroSection = () => {
           </Button>
 
           {(currentSlide.button2_text || !slides.length) && (
-            <Button size="lg" variant="outline" asChild className="border-2 border-white/50 text-white hover:bg-white/10 hover:scale-105 transition-all text-lg px-10 py-7 rounded-full backdrop-blur-sm min-w-[200px]">
+            <Button size="lg" variant="outline" asChild className="border-2 border-white/40 text-white hover:bg-white/10 hover:scale-105 transition-all text-base md:text-lg px-8 md:px-10 py-5 md:py-7 rounded-full backdrop-blur-sm min-w-[180px] md:min-w-[200px]">
               <a
                 href={currentSlide.button2_link || "/scholarship"}
                 target={currentSlide.button2_link?.startsWith('http') ? "_blank" : undefined}

@@ -25,26 +25,26 @@ const steps = [
 
 const ScholarshipSection = () => {
   return (
-    <section className="py-20 md:py-32 bg-slate-50 relative overflow-hidden">
+    <section className="py-12 md:py-32 bg-slate-50 relative overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-3xl"></div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
 
           {/* Left Column: Scholarship Info */}
           <div className="w-full lg:w-3/5 order-2 lg:order-1">
-            <div className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-primary/20">
+            <div className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 border border-primary/20">
               Scholarship 2026
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 md:mb-6 leading-tight">
               รับสมัครนักเรียนทุน <br />
               <span className="text-primary">มูลนิธิปัญญาคำ ปี 2569</span>
             </h2>
 
-            <p className="text-2xl font-bold text-amber-600 mb-8 flex items-center gap-2">
-              <Sparkles className="w-6 h-6" /> ทุนเรียนฟรี! ที่พักฟรี! สวัสดิการครบถ้วน
+            <p className="text-lg md:text-2xl font-bold text-amber-600 mb-6 md:mb-8 flex items-center gap-2">
+              <Sparkles className="w-5 h-5 md:w-6 md:h-6" /> ทุนเรียนฟรี! ที่พักฟรี! สวัสดิการครบถ้วน
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-10">
@@ -61,12 +61,40 @@ const ScholarshipSection = () => {
               ))}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button asChild size="lg" className="bg-warm-gradient hover:opacity-90 text-white px-10 py-7 rounded-2xl text-lg font-bold shadow-xl shadow-amber-500/20">
-                <Link to="/scholarship-apply">สมัครขอรับทุนออนไลน์</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-2 border-slate-200 px-10 py-7 rounded-2xl text-lg font-bold hover:bg-slate-50 transition-all">
-                <Link to="/contact">สอบถามเพิ่มเติม</Link>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
+              {/* Option 1: General Application */}
+              <div className="bg-white p-8 rounded-[2.5rem] border border-slate-100 shadow-xl shadow-slate-200/50 flex flex-col justify-between group hover:-translate-y-2 transition-all duration-300">
+                <div className="space-y-4">
+                  <div className="w-14 h-14 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition-colors">
+                    <Sparkles className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-2xl font-black text-slate-900">1. สนใจขอรับทุนการศึกษา</h3>
+                  <p className="text-slate-500">สำหรับนักเรียนทั่วไปที่ต้องการขอรับความช่วยเหลือทางการศึกษา กรุณากรอกข้อมูลเพื่อรับการพิจารณา</p>
+                </div>
+                <Button asChild size="lg" className="mt-8 bg-warm-gradient hover:opacity-90 text-white w-full h-16 rounded-2xl text-lg font-bold shadow-lg shadow-amber-500/20">
+                  <Link to="/scholarship-apply">แจ้งความประสงค์ขอรับทุน</Link>
+                </Button>
+              </div>
+
+              {/* Option 2: Pre-selected Registration */}
+              <div className="bg-indigo-600 p-8 rounded-[2.5rem] text-white shadow-xl shadow-indigo-200 flex flex-col justify-between group hover:-translate-y-2 transition-all duration-300 relative overflow-hidden">
+                <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+                <div className="space-y-4 relative z-10">
+                  <div className="w-14 h-14 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-white border border-white/30">
+                    <CheckCircle className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-2xl font-black">2. ผ่านการคัดเลือกแล้ว</h3>
+                  <p className="text-indigo-100 italic font-medium">เฉพาะนักเรียนที่ "ผ่านการคัดเลือก" จากอาจารย์และอาจารย์รับสมัครเท่านั้น</p>
+                </div>
+                <Button asChild size="lg" variant="secondary" className="mt-8 bg-white text-indigo-600 hover:bg-slate-100 w-full h-16 rounded-2xl text-lg font-black shadow-lg">
+                  <Link to="/register">กรอกใบสมัครขึ้นทะเบียนนักเรียน</Link>
+                </Button>
+              </div>
+            </div>
+
+            <div className="mt-10 text-center">
+              <Button asChild variant="ghost" size="lg" className="text-slate-400 hover:text-primary font-bold">
+                <Link to="/contact">สอบถามขั้นตอนการรับทุนเพิ่มเติม</Link>
               </Button>
             </div>
           </div>

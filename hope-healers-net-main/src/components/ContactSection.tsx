@@ -45,10 +45,10 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-section-gradient overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <p className="text-sm font-medium text-secondary uppercase tracking-widest mb-3">ติดต่อ</p>
+    <section className="py-12 md:py-28 bg-section-gradient overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-10 md:mb-16">
+          <p className="text-xs md:text-sm font-medium text-secondary uppercase tracking-widest mb-2 md:mb-3">ติดต่อ</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">ติดต่อเรา</h2>
         </div>
 

@@ -16,9 +16,9 @@ const DonateSection = () => {
   };
 
   return (
-    <section className="py-20 md:py-32 bg-white overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+    <section className="py-12 md:py-32 bg-white overflow-hidden">
+      <div className="container mx-auto px-6">
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
 
           {/* Left Column: Bank Card (Visual Representation of Account) */}
           <div className="w-full lg:w-1/2 order-2 lg:order-1">
@@ -85,7 +85,7 @@ const DonateSection = () => {
               <span className="text-sm font-black text-rose-500 uppercase tracking-widest">Make an Impact</span>
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-black text-foreground mb-8 leading-tight">
+            <h2 className="text-3xl md:text-5xl font-black text-foreground mb-6 md:mb-8 leading-tight">
               ร่วมบริจาคเพื่อเป็น <br />
               <span className="text-primary italic">ส่วนหนึ่งในการช่วยเหลือ</span>
             </h2>

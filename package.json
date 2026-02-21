@@ -1,9 +1,12 @@
 {
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@supabase/supabase-js": "^2.97.0",
     "font-th-sarabun-new": "^1.0.0",
     "jspdf": "^4.2.0",
     "jspdf-autotable": "^5.0.7",
-    "xlsx": "^0.18.5"
+    "react-hook-form": "^7.71.2",
+    "xlsx": "^0.18.5",
+    "zod": "^4.3.6"
   }
 }

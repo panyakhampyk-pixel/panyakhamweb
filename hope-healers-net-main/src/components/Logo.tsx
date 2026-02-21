@@ -2,6 +2,7 @@ interface LogoProps {
     size?: "sm" | "md" | "lg" | "xl";
     showText?: boolean;
     className?: string;
+    dark?: boolean;
 }
 
 const sizes = {
@@ -11,7 +12,7 @@ const sizes = {
     xl: { icon: 96, text1: "text-2xl", text2: "text-base" },
 };
 
-const Logo = ({ size = "md", showText = true, className = "" }: LogoProps) => {
+const Logo = ({ size = "md", showText = true, className = "", dark = false }: LogoProps) => {
     const s = sizes[size];
 
     return (
@@ -29,7 +30,7 @@ const Logo = ({ size = "md", showText = true, className = "" }: LogoProps) => {
             {/* Text */}
             {showText && (
                 <div className="leading-tight">
-                    <span className={`font-bold text-foreground block ${s.text1}`}>
+                    <span className={`font-bold ${dark ? "text-foreground" : "text-white"} block ${s.text1}`}>
                         มูลนิธิเพื่อการศึกษา
                     </span>
                     <span className={`font-semibold text-amber-500 ${s.text2}`}>

@@ -13,6 +13,7 @@ import { useToast } from "@/hooks/use-toast";
 interface Staff {
     id: string;
     name: string;
+    email?: string;
     position: string;
     image_url: string;
     group_name: string;
@@ -30,6 +31,7 @@ const AdminStaff = () => {
 
     const [formData, setFormData] = useState({
         name: "",
+        email: "",
         position: "",
         group_name: "",
         group_level: 1,
@@ -84,6 +86,7 @@ const AdminStaff = () => {
 
             const staffData = {
                 name: formData.name,
+                email: formData.email,
                 position: formData.position,
                 group_name: formData.group_name,
                 group_level: formData.group_level,
@@ -119,6 +122,7 @@ const AdminStaff = () => {
         setEditingStaffId(null);
         setFormData({
             name: "",
+            email: "",
             position: "",
             group_name: "",
             group_level: 1,
@@ -131,6 +135,7 @@ const AdminStaff = () => {
         setEditingStaffId(person.id);
         setFormData({
             name: person.name,
+            email: person.email || "",
             position: person.position,
             group_name: person.group_name,
             group_level: person.group_level,
@@ -198,6 +203,10 @@ const AdminStaff = () => {
                                 <div className="space-y-2">
                                     <label className="text-xs font-black uppercase text-muted-foreground ml-2">ชื่อ-นามสกุล</label>
                                     <Input required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} placeholder="ระบุนามแฝงหรือชื่อจริง" className="rounded-xl h-12" />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-xs font-black uppercase text-muted-foreground ml-2">อีเมล</label>
+                                    <Input value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} placeholder="email@example.com (สำหรับระบบรับสมัคร)" className="rounded-xl h-12" />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-xs font-black uppercase text-muted-foreground ml-2">ตำแหน่ง</label>

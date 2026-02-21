@@ -49,16 +49,16 @@ const PrideSection = () => {
     if (topics.length === 0 && !loading) return null;
 
     return (
-        <section className="py-20 md:py-32 bg-white overflow-hidden">
-            <div className="container mx-auto px-4">
-                <div className="text-center mb-20 animate-in fade-in duration-1000">
-                    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-50 text-amber-600 rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-amber-100">
+        <section className="py-12 md:py-32 bg-white overflow-hidden">
+            <div className="container mx-auto px-6">
+                <div className="text-center mb-12 md:mb-20 animate-in fade-in duration-1000">
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-50 text-amber-600 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6 border border-amber-100">
                         <Trophy className="w-3 h-3 fill-current" /> Our Achievements
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-black text-foreground mb-6">
+                    <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 md:mb-6">
                         ความภาคภูมิใจ <span className="text-primary">ของพวกเรา</span>
                     </h2>
-                    <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
+                    <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
                         รวบรวมภาพความประทับใจและความสำเร็จที่พวกเราได้ร่วมแรงร่วมใจกันสร้างขึ้น
                         เพื่อสร้างโอกาสและอนาคตที่สดใสให้กับเยาวชน
                     </p>
@@ -84,8 +84,8 @@ const PrideSection = () => {
                                 </div>
                             </div>
 
-                            {/* Image Grid for this Topic - 3 columns on mobile */}
-                            <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-2 md:gap-6">
+                            {/* Image Grid for this Topic - 2 columns on mobile */}
+                            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-3 md:gap-6">
                                 {topic.images.map((image) => (
                                     <div
                                         key={image.id}

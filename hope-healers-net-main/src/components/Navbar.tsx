@@ -48,7 +48,9 @@ const Navbar = () => {
                   item.href === '#news' ? '/news' :
                     item.href === '#donate' ? '/donate' :
                       item.href === '#contact' ? '/contact' :
-                        item.href
+                        item.href === '#register' ? '/students' :
+                          item.href === '#check-application' ? '/check-application' :
+                            item.href
         }));
       } else {
         items = [
@@ -58,8 +60,14 @@ const Navbar = () => {
           { id: '4', label: "ข่าวสาร", href: "/news" },
           { id: '5', label: "ร่วมบริจาค", href: "/donate" },
           { id: '6', label: "ขอรับทุน", href: "/scholarship" },
+          { id: '8', label: "สมัครเรียน", href: "/students" },
           { id: '7', label: "ติดต่อ", href: "/contact" },
         ];
+      }
+
+      // Ensure "สมัครเรียน" is always there if not in Supabase
+      if (!items.find(i => i.href === '/students')) {
+        items.push({ id: 'nav-students', label: "สมัครเรียน", href: "/students" });
       }
 
       // Group "Staff" under "About"
@@ -68,10 +76,16 @@ const Navbar = () => {
 
       const filtered = items.filter(item => {
         if (item.label.includes("เกี่ยวกับ")) {
-          aboutItem = { ...item, submenu: [{ id: 'staff', label: "ทำเนียบ", href: "/staff" }] };
+          aboutItem = {
+            ...item,
+            submenu: [
+              { id: 'staff-personnel', label: "บุคลากร", href: "/staff" },
+              { id: 'staff-teachers', label: "รายชื่ออาจารย์", href: "/teachers" }
+            ]
+          };
           return false;
         }
-        if (item.label.includes("ทำเนียบ")) return false;
+        if (item.label.includes("ทำเนียบ") || item.label.includes("บุคลากร") || item.label.includes("อาจารย์")) return false;
         return true;
       });
 
@@ -89,18 +103,21 @@ const Navbar = () => {
     navigate("/");
   };
 
+  const isHomePage = location.pathname === "/";
+  const showSolidNavbar = scrolled || !isHomePage;
+
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-white/80 backdrop-blur-xl border-b border-slate-100 py-2 shadow-sm" : "bg-transparent py-4"}`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${showSolidNavbar ? "bg-white/80 backdrop-blur-xl border-b border-slate-100 py-2 shadow-sm" : "bg-transparent py-4"}`}>
       <div className="container mx-auto px-6 flex items-center justify-between">
         {/* Left: Logo */}
-        <div className="flex-1">
+        <div className="flex-shrink-0">
           <Link to="/" className="inline-block hover:scale-105 transition-transform">
-            <Logo size="sm" />
+            <Logo size="sm" dark={showSolidNavbar} />
           </Link>
         </div>
 
         {/* Center: Navigation Menu */}
-        <div className="hidden lg:flex items-center gap-8 justify-center flex-[2]">
+        <div className="hidden lg:flex items-center gap-4 xl:gap-6 justify-center flex-grow">
           {navItems.map((item) => (
             <div key={item.href} className="relative group"
               onMouseEnter={() => item.submenu && setAboutOpen(true)}
@@ -108,12 +125,12 @@ const Navbar = () => {
 
               <Link
                 to={item.href}
-                className={`text-sm font-bold tracking-tight transition-all duration-300 flex items-center gap-1
-                  ${scrolled ? "text-slate-600 hover:text-primary" : "text-white drop-shadow-md hover:text-white/80"}`}
+                className={`text-[13px] xl:text-sm font-bold tracking-tight transition-all duration-300 flex items-center gap-1 whitespace-nowrap
+                  ${showSolidNavbar ? "text-slate-600 hover:text-primary" : "text-white drop-shadow-md hover:text-white/80"}`}
               >
                 {item.label}
                 {item.submenu && <ChevronDown className={`w-4 h-4 transition-transform ${aboutOpen ? "rotate-180" : ""}`} />}
-                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full ${!scrolled && "bg-white"}`}></span>
+                <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full ${!showSolidNavbar && "bg-white"}`}></span>
               </Link>
 
               {/* Dropdown Menu */}
@@ -136,23 +153,23 @@ const Navbar = () => {
         </div>
 
         {/* Right: Action Buttons */}
-        <div className="hidden lg:flex items-center gap-3 justify-end flex-1">
-          <Button asChild variant="outline" className={`rounded-xl font-bold transition-all px-5 py-2 border-2 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0
-            ${scrolled ? "border-primary text-primary hover:bg-primary/5" : "border-white text-white hover:bg-white/10"}`}>
+        <div className="hidden lg:flex items-center gap-2 xl:gap-3 flex-shrink-0">
+          <Button asChild variant="outline" className={`rounded-xl font-bold transition-all px-3 xl:px-5 py-2 border-2 shadow-sm hover:shadow-md hover:-translate-y-0.5 active:translate-y-0 text-xs xl:text-sm
+            ${showSolidNavbar ? "border-primary text-primary hover:bg-primary/5" : "border-white text-white hover:bg-white/10"}`}>
             <Link to="/scholarship">ขอรับทุน</Link>
           </Button>
 
-          <Button asChild className={`rounded-xl font-bold transition-all px-5 py-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0
-            ${scrolled ? "bg-primary text-white" : "bg-white text-primary hover:bg-slate-50"}`}>
+          <Button asChild className={`rounded-xl font-bold transition-all px-3 xl:px-5 py-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 text-xs xl:text-sm
+            ${showSolidNavbar ? "bg-primary text-white" : "bg-white text-primary hover:bg-slate-50"}`}>
             <Link to="/donate">ร่วมบริจาค</Link>
           </Button>
 
           {user && (
             <div className="flex items-center gap-2">
-              <Button asChild variant="outline" size="sm" className={`rounded-xl font-bold border-2 ${!scrolled && "bg-white/10 text-white border-white/20 hover:bg-white/20"}`}>
+              <Button asChild variant="outline" size="sm" className={`rounded-xl font-bold border-2 ${!showSolidNavbar && "bg-white/10 text-white border-white/20 hover:bg-white/20"}`}>
                 <Link to="/admin">แผงควบคุม</Link>
               </Button>
-              <Button variant="ghost" size="sm" onClick={handleSignOut} className={`font-bold ${scrolled ? "text-slate-400 hover:text-destructive" : "text-white/70 hover:text-white hover:bg-white/10"}`}>
+              <Button variant="ghost" size="sm" onClick={handleSignOut} className={`font-bold ${showSolidNavbar ? "text-slate-400 hover:text-destructive" : "text-white/70 hover:text-white hover:bg-white/10"}`}>
                 ออก
               </Button>
             </div>
@@ -161,7 +178,7 @@ const Navbar = () => {
 
         {/* Mobile toggle */}
         <button
-          className={`lg:hidden p-2 rounded-xl transition-colors ${scrolled ? "text-slate-900 hover:bg-slate-100" : "text-white hover:bg-white/10"}`}
+          className={`lg:hidden p-2 rounded-xl transition-colors ${showSolidNavbar ? "text-slate-900 hover:bg-slate-100" : "text-white hover:bg-white/10"}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="w-7 h-7" /> : <Menu className="w-7 h-7" />}
@@ -207,7 +224,7 @@ const Navbar = () => {
                 </Button>
               </div>
 
-              {user ? (
+              {user && (
                 <div className="grid grid-cols-2 gap-3">
                   <Button asChild variant="outline" size="lg" className="rounded-2xl font-bold py-6 border-2" onClick={() => setIsOpen(false)}>
                     <Link to="/admin">แผงควบคุม</Link>
@@ -216,13 +233,6 @@ const Navbar = () => {
                     ออกกจากระบบ
                   </Button>
                 </div>
-              ) : (
-                <Button asChild variant="outline" size="lg" className="rounded-2xl font-bold py-6 border-2 gap-2" onClick={() => setIsOpen(false)}>
-                  <Link to="/login">
-                    <LogIn className="w-5 h-5" />
-                    เข้าสู่ระบบ
-                  </Link>
-                </Button>
               )}
             </div>
           </div>

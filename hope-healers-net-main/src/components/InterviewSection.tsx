@@ -2,11 +2,11 @@ import { Play } from "lucide-react";
 
 const InterviewSection = () => {
     return (
-        <section className="py-20 md:py-32 bg-slate-50 relative overflow-hidden">
+        <section className="py-12 md:py-32 bg-slate-50 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-50/50 -skew-x-12 transform translate-x-20 -z-0" />
 
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
                     {/* Left Column: YouTube Video */}
                     <div className="w-full lg:w-7/12 order-2 lg:order-1">
                         <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-white group">
@@ -23,11 +23,11 @@ const InterviewSection = () => {
 
                     {/* Right Column: Text Content */}
                     <div className="w-full lg:w-5/12 order-1 lg:order-2">
-                        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-xs font-bold uppercase tracking-widest mb-6">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-100 text-blue-600 rounded-full text-[10px] md:text-xs font-bold uppercase tracking-widest mb-4 md:mb-6">
                             <Play className="w-3 h-3 fill-current" /> บทสัมภาษณ์
                         </div>
 
-                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-8 leading-tight">
+                        <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-foreground mb-6 md:mb-8 leading-tight">
                             เสียงสะท้อนจาก <span className="text-primary underline decoration-amber-500 underline-offset-8">อนาคต</span>
                         </h2>
 
