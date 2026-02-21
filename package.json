@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@supabase/supabase-js": "^2.97.0",
+    "font-th-sarabun-new": "^1.0.0",
+    "jspdf": "^4.2.0",
+    "jspdf-autotable": "^5.0.7",
+    "xlsx": "^0.18.5"
+  }
+}
