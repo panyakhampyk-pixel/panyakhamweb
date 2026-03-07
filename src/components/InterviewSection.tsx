@@ -12,7 +12,7 @@ const InterviewSection = () => {
                         <div className="relative aspect-video rounded-3xl overflow-hidden shadow-2xl border-4 border-white group">
                             <iframe
                                 className="absolute inset-0 w-full h-full"
-                                src="https://www.youtube.com/embed/enRq4IRzgJI"
+                                src="https://www.youtube.com/embed/tMxcsUZ-8Gs"
                                 title="บทสัมภาษณ์นักศึกษาทุนมูลนิธิเพื่อการศึกษาปัญญาคำ"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
